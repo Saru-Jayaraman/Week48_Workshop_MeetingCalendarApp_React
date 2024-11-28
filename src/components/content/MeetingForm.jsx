@@ -1,5 +1,5 @@
 import React from 'react';
-import { addMeetingData, updateMeetingData } from '../service/MeetingDetails';
+import { addMeetingData, updateMeetingData } from '../../service/MeetingAPI';
 import { HiMiniPlus } from "react-icons/hi2";
 import { AiOutlineSave } from "react-icons/ai";
 import { MdClear } from "react-icons/md";

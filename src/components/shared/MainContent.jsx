@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import AlertMessage from './AlertMessage';
-import Dashboard from './Dashboard';
-import ScheduleMeeting from './ScheduleMeeting';
-import MeetingsList from './MeetingsList';
-import { getAllMeetingsData } from '../service/MeetingDetails';
+import AlertMessage from '../content/AlertMessage';
+import Dashboard from '../content/Dashboard';
+import ScheduleMeeting from '../content/MeetingForm';
+import MeetingsList from '../content/MeetingsList';
+import { getAllMeetingsData } from '../../service/MeetingAPI';
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaCheckCircle } from 'react-icons/fa';
 

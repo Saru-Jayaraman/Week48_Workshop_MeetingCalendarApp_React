@@ -1,5 +1,5 @@
 import React from 'react';
-import { deleteMeetingData } from '../service/MeetingDetails';
+import { deleteMeetingData } from '../../service/MeetingAPI';
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
 

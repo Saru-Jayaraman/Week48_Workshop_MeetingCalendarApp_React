@@ -5,8 +5,9 @@ export const getAllMeetingsData = () => {
 };
 
 export const addMeetingData = (meeting) => {
+    const newMeetingId = meetingData.length !==0 ? meetingData[meetingData.length-1].id+1 : meetingData.length+1;
     const newMeeting = {
-        id: meetingData.length+1,
+        id: newMeetingId,
         title: meeting.title,
         date: meeting.date,
         time: meeting.time,

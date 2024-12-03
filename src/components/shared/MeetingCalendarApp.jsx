@@ -1,13 +1,13 @@
 import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import Content from './MainContent';
+import MainContent from './MainContent';
 
 const MeetingCalendarApp = () => {
     return (
     <div>
         <Navbar />
-        <Content />
+        <MainContent />
         <Footer />
     </div>
     );

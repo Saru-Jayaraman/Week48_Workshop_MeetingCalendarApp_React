@@ -5,7 +5,7 @@ import { HiMiniPlus } from "react-icons/hi2";
 import { AiOutlineSave } from "react-icons/ai";
 import { MdClear } from "react-icons/md";
 
-const ScheduleMeeting = ({setShowAlert, showEdit, meetingFormData, setMeetingFormData, createMeetingAPI, updateMeetingAPI, clearFields, handleCreateButton}) => {
+const MeetingForm = ({setShowAlert, showEdit, meetingFormData, setMeetingFormData, createMeetingAPI, updateMeetingAPI, clearFields, handleCreateButton}) => {
     const {register, handleSubmit, setValue, getFieldState, clearErrors, 
         formState: {errors}} = useFormContext();
 
@@ -163,4 +163,4 @@ const ScheduleMeeting = ({setShowAlert, showEdit, meetingFormData, setMeetingFor
     );
 };
 
-export default ScheduleMeeting;
+export default MeetingForm;

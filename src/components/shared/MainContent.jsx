@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import AlertMessage from '../content/AlertMessage';
 import Dashboard from '../content/Dashboard';
-import ScheduleMeeting from '../content/MeetingForm';
+import MeetingForm from '../content/MeetingForm';
 import MeetingsList from '../content/MeetingsList';
 import { getAllMeetingsData, addMeetingData, updateMeetingData, deleteMeetingData } from '../../service/MeetingAPI';
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaCheckCircle } from 'react-icons/fa';
 
-const Content = () => {
+const MainContent = () => {
     const methods = useForm();
     const [meetingFormData, setMeetingFormData] = useState({
         title: "",
@@ -25,10 +25,10 @@ const Content = () => {
     const [editId, setEditId] = useState();
     const [reload, setReload] = useState(false);
     const [showEdit, setShowEdit] = useState(false);
-    const handleCreateButton = () => {
+    const handleCreateButton = () => {// showing create button
         setShowEdit(false);
     };
-    const handleEditButton = () => {
+    const handleEditButton = () => {// showing edit button
         setShowEdit(true);
     };
 
@@ -55,8 +55,8 @@ const Content = () => {
         setAlertName("DELETED");
         setAlertColor("danger");
         setShowAlert(true);
-        clearFields();
         methods.clearErrors();
+        clearFields();
     };
 
     const handleEditEvent = (id) => {
@@ -112,7 +112,7 @@ const Content = () => {
                         <div className="card mb-1">
                             <div className="card-body">
                                 <h5 className="card-title bg-primary ps-1 py-1 rounded text-white"><FaCalendarAlt /> Schedule a New Meeting</h5>
-                                <ScheduleMeeting
+                                <MeetingForm
                                     meetingFormData={meetingFormData} setMeetingFormData={setMeetingFormData} 
                                     setShowAlert={setShowAlert}
                                     createMeetingAPI={createMeetingAPI}
@@ -139,4 +139,4 @@ const Content = () => {
     );
 };
 
-export default Content;
+export default MainContent;

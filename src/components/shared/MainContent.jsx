@@ -10,10 +10,11 @@ import { FaCheckCircle } from 'react-icons/fa';
 
 const MainContent = () => {
     const methods = useForm();
-    const [meetingFormData, setMeetingFormData] = useState({
+    let [meetingFormData, setMeetingFormData] = useState({
         title: "",
         date: "",
-        time: "",
+        startTime: "",
+        endTime: "",
         level: "",
         participants: "",
         description: ""
@@ -50,13 +51,18 @@ const MainContent = () => {
     };
 
     const deleteMeetingAPI = (id) => {
-        deleteMeetingData(id);
-        handleCreateButton();
-        setAlertName("DELETED");
-        setAlertColor("danger");
-        setShowAlert(true);
-        methods.clearErrors();
-        clearFields();
+        if(confirm("Confirm to delete?")) {
+            deleteMeetingData(id);
+            handleCreateButton();
+            setAlertName("DELETED");
+            setAlertColor("danger");
+            setShowAlert(true);
+            methods.clearErrors();
+            clearFields();
+        } else {
+            setAlertName("CANCELLED");
+            setAlertColor("info");
+        }
     };
 
     const handleEditEvent = (id) => {
@@ -64,7 +70,8 @@ const MainContent = () => {
         const setMeeting = {
             title: foundMeeting[0].title,
             date: foundMeeting[0].date,
-            time: foundMeeting[0].time,
+            startTime: foundMeeting[0].startTime,
+            endTime: foundMeeting[0].endTime,
             level: foundMeeting[0].level,
             participants: foundMeeting[0].participants,
             description: foundMeeting[0].description
@@ -80,7 +87,8 @@ const MainContent = () => {
         setMeetingFormData({
             title: "",
             date: "",
-            time: "",
+            startTime: "",
+            endTime: "",
             level: "",
             participants: "",
             description: ""
@@ -96,7 +104,15 @@ const MainContent = () => {
     <div className='container-fluid bg-light'>
         <div className='row'>
             <div className='col'>
-                {showAlert && <AlertMessage icon={<FaCheckCircle />} message={<>Meeting is <b>{alertName}</b> successfully...</>} color={alertColor} />}
+                {showAlert && <AlertMessage icon={<FaCheckCircle />} 
+                message=
+                {
+                <>
+                    {alertName !== "CANCELLED" ? 
+                        (<>Meeting is successfully <b>{alertName}</b></>) : (<>Deletion opertion is <b>{alertName}</b></>)}
+                </>
+                } 
+                color={alertColor} />}
             </div>
         </div>
 
@@ -114,7 +130,7 @@ const MainContent = () => {
                                 <h5 className="card-title bg-primary ps-1 py-1 rounded text-white"><FaCalendarAlt /> Schedule a New Meeting</h5>
                                 <MeetingForm
                                     meetingFormData={meetingFormData} setMeetingFormData={setMeetingFormData} 
-                                    setShowAlert={setShowAlert}
+                                    showAlert={showAlert} setShowAlert={setShowAlert}
                                     createMeetingAPI={createMeetingAPI}
                                     updateMeetingAPI={updateMeetingAPI}
                                     clearFields={clearFields}
@@ -122,7 +138,7 @@ const MainContent = () => {
                                     handleCreateButton={handleCreateButton} />
                             </div>
                         </div>
-                        <div className="card mb-1">
+                        <div className="card mb-1" style={{overflowY: "scroll", height: "150px"}}>
                             <div className="card-body">
                                 <h5 className="card-title">List of Created Meetings</h5>
                                 <MeetingsList 

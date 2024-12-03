@@ -10,7 +10,8 @@ const MeetingsList = ({allMeetingsData, deleteMeetingAPI, handleEditEvent}) => {
                     <td>{meeting.id}</td>
                     <td>{meeting.title}</td>
                     <td>{meeting.date}</td>
-                    <td>{meeting.time}</td>
+                    <td>{meeting.startTime}</td>
+                    <td>{meeting.endTime}</td>
                     <td>{meeting.level}</td>
                     <td>
                         <span className='p-1 mx-1 border rounded-2' style={{backgroundColor: "#fd7e14"}} 
@@ -32,7 +33,8 @@ const MeetingsList = ({allMeetingsData, deleteMeetingAPI, handleEditEvent}) => {
                     <th>#</th>
                     <th>Title</th>
                     <th>Date</th>
-                    <th>Time</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
                     <th>Level</th>
                     <th>Actions</th>
                 </tr>

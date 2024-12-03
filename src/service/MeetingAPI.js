@@ -10,7 +10,8 @@ export const addMeetingData = (meeting) => {
         id: newMeetingId,
         title: meeting.title,
         date: meeting.date,
-        time: meeting.time,
+        startTime: meeting.startTime,
+        endTime: meeting.endTime,
         level: meeting.level,
         participants: meeting.participants,
         description: meeting.description

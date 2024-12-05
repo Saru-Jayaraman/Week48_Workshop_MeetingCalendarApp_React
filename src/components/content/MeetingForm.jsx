@@ -98,6 +98,7 @@ const MeetingForm = ({setShowAlert, showEdit, meetingFormData, setMeetingFormDat
                             onChange: (event) => handleFormValues("date", event.target.value)
                         })} 
                         value= {meetingFormData.date}
+                        min={new Date().toISOString().split("T")[0]} 
                         />
                         {errors.date && <span className='invalid-feedback d-block'>{errors.date.message}</span>}
                 </div>
